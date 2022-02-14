@@ -206,7 +206,7 @@ $related_products = do_shortcode('[aff_products taxonomy_slug="manufacturer" tax
  if ($manufacturer_name){
  $content .= '<div class="row m-0">';
  $content .= '<div class="col-12">';
- $content .= '<h3 class="m-0 pt-3">More Products from '.$manufacturer_name.'</h3>';
+ $content .= '<h3 class="m-0 pt-3">Products from '.$manufacturer_name.'</h3>';
  $content .= '<br>';
  $content .= $related_products;
  $content .= '</div>';
