@@ -4,10 +4,12 @@
  * 
  * @package bootstrap-affiliate
  */
+$full_width_header = get_field('full_width_header');
+$full_width_content = get_field('full_width_content');
 
 $container_class = apply_filters('bootstrap_basic4_container_class', 'container');
 if (!is_scalar($container_class) || empty($container_class)) {
-    $container_class = 'container';
+      $container_class = 'container';        
 }
 ?>
 <!DOCTYPE html>
@@ -27,23 +29,14 @@ if (!is_scalar($container_class) || empty($container_class)) {
     <body <?php body_class(); ?>>
         <?php
         if (function_exists('wp_body_open')) {
-            wp_body_open();
+           wp_body_open();
         }
         ?> 
-        <div class="<?php echo $container_class; ?> page-container">
-            <header class="page-header page-header-sitebrand-topbar">
-                <div class="row row-with-vspace site-branding">
-                    <div class="col-md-6 site-title">
-                        <h1 class="site-title-heading">
-                            <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home"><?php bloginfo('name'); ?></a>
-                        </h1>
-                        <div class="site-description">
-                            <small>
-                                <?php bloginfo('description'); ?> 
-                            </small>
-                        </div>
-                    </div>
-                    <div class="col-md-6 page-header-top-right">
+        <div class="<?php if( !$full_width_header  ) {echo $container_class;} ?> page-container">
+            <header class="m-0 sticky-top page-header page-header-sitebrand-topbar">
+                
+            <div class="m-0 row row-with-vspace site-branding">
+                    <div class=" m-0 col-md-6 page-header-top-right">
                         <div class="sr-only">
                             <a href="#content" title="<?php esc_attr_e('Skip to content', 'bootstrap-affiliate'); ?>"><?php _e('Skip to content', 'bootstrap-affiliate'); ?></a>
                         </div>
@@ -54,7 +47,7 @@ if (!is_scalar($container_class) || empty($container_class)) {
                         <div class="clearfix"></div>
                         <?php } // endif; ?> 
                     </div>
-                </div><!--.site-branding-->
+                </div> <!--.site-branding-->
                 <?php if (has_nav_menu('primary') || is_active_sidebar('navbar-right')) { ?> 
                 <div class="row main-navigation">
                     <div class="col-md-12">
@@ -62,7 +55,7 @@ if (!is_scalar($container_class) || empty($container_class)) {
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bootstrap-affiliate-topnavbar" aria-controls="bootstrap-affiliate-topnavbar" aria-expanded="false" aria-label="<?php esc_attr_e('Toggle navigation', 'bootstrap-affiliate'); ?>">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
-                            <div id="bootstrap-affiliate-topnavbar" class="collapse navbar-collapse">
+                            <div id="bootstrap-basic4-topnavbar" class="collapse navbar-collapse">
                                 <?php 
                                 wp_nav_menu(
                                     [
@@ -89,5 +82,12 @@ if (!is_scalar($container_class) || empty($container_class)) {
                 <?php }// endif; ?> 
             </header><!--.page-header-->
 
+            <?php 
 
-            <div id="content" class="site-content row row-with-vspace">
+$header_image = get_field('header_image'); // assigns the image field to the variable of $image
+
+if( !empty($header_image) ){ ?> <!-- if the $image variable isn't empty, display the following: -->
+    <img class="img-fluid" src="<?php echo $header_image['url']; ?>" alt="<?php echo $header_image['alt']; ?>" /> <!--displays the URL for the image variable and also the alt tag which is entered in the WordPress media library-->
+
+<?php }; ?> <!--ends the if statement -->
+            <div id="content" class="<?php if( !$full_width_content  ) {echo $container_class;} ?> site-content pt-4">
