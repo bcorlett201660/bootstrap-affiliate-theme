@@ -5,6 +5,9 @@
  * @package bootstrap-affiliate
  */
 $full_width_header = get_field('full_width_header');
+$header_max_height = get_field('header_max_height');
+$header_image_max_hieght_units = get_field('header_image_max_hieght_units');
+
 $full_width_content = get_field('full_width_content');
 
 $container_class = apply_filters('bootstrap_basic4_container_class', 'container');
@@ -87,7 +90,7 @@ if (!is_scalar($container_class) || empty($container_class)) {
 $header_image = get_field('header_image'); // assigns the image field to the variable of $image
 
 if( !empty($header_image) ){ ?> <!-- if the $image variable isn't empty, display the following: -->
-    <img class="img-fluid" src="<?php echo $header_image['url']; ?>" alt="<?php echo $header_image['alt']; ?>" /> <!--displays the URL for the image variable and also the alt tag which is entered in the WordPress media library-->
+    <img style="max-height:<?php echo $header_max_height . $header_image_max_hieght_units; ?>" class="img-fluid w-100" src="<?php echo $header_image['url']; ?>" alt="<?php echo $header_image['alt']; ?>" /> <!--displays the URL for the image variable and also the alt tag which is entered in the WordPress media library-->
 
 <?php }; ?> <!--ends the if statement -->
             <div id="content" class="<?php if( !$full_width_content  ) {echo $container_class;} ?> site-content pt-4">
