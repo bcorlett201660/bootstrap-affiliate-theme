@@ -5,8 +5,8 @@
  * @package bootstrap-affiliate
  */
 $full_width_header = get_field('full_width_header');
-$header_max_height = get_field('header_max_height');
-$header_image_max_hieght_units = get_field('header_image_max_hieght_units');
+$header_image_height = get_field('header_image_height');
+$header_image_hieght_units = get_field('header_image_max_hieght_units');
 
 $full_width_content = get_field('full_width_content');
 
@@ -58,6 +58,9 @@ if (!is_scalar($container_class) || empty($container_class)) {
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bootstrap-affiliate-topnavbar" aria-controls="bootstrap-affiliate-topnavbar" aria-expanded="false" aria-label="<?php esc_attr_e('Toggle navigation', 'bootstrap-affiliate'); ?>">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
+                            <h3 class="site-title-heading">
+                            <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home"><?php bloginfo('name'); ?></a>
+                        </h3>
                             <div id="bootstrap-basic4-topnavbar" class="collapse navbar-collapse">
                                 <?php 
                                 wp_nav_menu(
@@ -66,7 +69,7 @@ if (!is_scalar($container_class) || empty($container_class)) {
                                         'theme_location' => 'primary', 
                                         'container' => false, 
                                         'menu_id' => 'bb4-primary-menu',
-                                        'menu_class' => 'navbar-nav mr-auto', 
+                                        'menu_class' => 'navbar-nav ml-auto', 
                                         'walker' => new \BootstrapBasic4\BootstrapBasic4WalkerNavMenu()
                                     ]
                                 ); 
@@ -90,7 +93,7 @@ if (!is_scalar($container_class) || empty($container_class)) {
 $header_image = get_field('header_image'); // assigns the image field to the variable of $image
 
 if( !empty($header_image) ){ ?> <!-- if the $image variable isn't empty, display the following: -->
-    <img style="max-height:<?php echo $header_max_height . $header_image_max_hieght_units; ?>" class="img-fluid w-100" src="<?php echo $header_image['url']; ?>" alt="<?php echo $header_image['alt']; ?>" /> <!--displays the URL for the image variable and also the alt tag which is entered in the WordPress media library-->
-
+    <img style="height:<?php echo $header_image_height . $header_image_hieght_units; ?>" class="d-block d-md-none img-fluid w-100" src="<?php echo $header_image['url']; ?>" alt="<?php echo $header_image['alt']; ?>" /> <!--displays the URL for the image variable and also the alt tag which is entered in the WordPress media library-->
+    <div style="height:<?php echo $header_image_height . $header_image_hieght_units; ?>; background: url(<?php echo $header_image['url']; ?>); background-repeat: no-repeat; background-size: cover; background-position: center;" class="d-none d-md-block"></div>
 <?php }; ?> <!--ends the if statement -->
             <div id="content" class="<?php if( !$full_width_content  ) {echo $container_class;} ?> site-content pt-4">

@@ -22,21 +22,20 @@ function my_acf_add_local_field_groups_page_design_header() {
 				'message' => 'Enable',
 			),
 			array(
-					'key' => 'header_max_height',
-				'label' => 'Image Max Height',
-				'name' => 'header_max_height',
+					'key' => 'header_image_height',
+				'label' => 'Image Height',
+				'name' => 'header_image_height',
 				'type' => 'number',
-				'default_value' => 33,
+				'default_value' => 50,
 
 			),
 			array(
-				'key' => 'header_image_max_hieght_units',
-				'label' => 'Max Height Units',
-				'name' => 'header_image_max_hieght_units',
+				'key' => 'header_image_hieght_units',
+				'label' => 'Image Height Units',
+				'name' => 'header_image_hieght_units',
 				'type' => 'select',
 				'choices' => array(
 					'vh'	=> 'Vertical Hight',
-					'%'	=> 'Percent',
 					'rem'	=> 'Rem',
 					'px'	=> 'Pixels',
 				),
