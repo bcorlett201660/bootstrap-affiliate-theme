@@ -58,9 +58,7 @@ if (!is_scalar($container_class) || empty($container_class)) {
                             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bootstrap-affiliate-topnavbar" aria-controls="bootstrap-affiliate-topnavbar" aria-expanded="false" aria-label="<?php esc_attr_e('Toggle navigation', 'bootstrap-affiliate'); ?>">
                                 <span class="navbar-toggler-icon"></span>
                             </button>
-                            <h3 class="site-title-heading">
-                            <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" rel="home"><?php bloginfo('name'); ?></a>
-                        </h3>
+                            
                             <div id="bootstrap-basic4-topnavbar" class="collapse navbar-collapse">
                                 <?php 
                                 wp_nav_menu(
