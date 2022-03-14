@@ -63,7 +63,7 @@ if (!is_scalar($container_class) || empty($container_class)) {
                                 <?php 
                                 wp_nav_menu(
                                     [
-                                        'depth' => '2',
+                                        'depth' => '4',
                                         'theme_location' => 'primary', 
                                         'container' => false, 
                                         'menu_id' => 'bb4-primary-menu',
